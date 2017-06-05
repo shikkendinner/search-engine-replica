@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<!-- This page acts as a template page for the result page (the page with the breakdown of the searched phrase) -->
+<html>
+	<head>
+		<title>Puddle Phrase Results</title>
+		<!-- the favicon -->
+		<link rel="icon" href="../images/puddle.jpg" />
+		<style> 
+			#results{
+				width:100%;
+				border: 1px solid black;
+				border-collapse: collapse;
+				background-color: #B3D9FF;
+			}
+
+			#resultLinks{
+				display: none;
+			}
+
+			#emptySearch{
+				display: none;
+			}
+
+			#text{
+				margin-top: 100px;
+			}
+
+			div{
+				display: block;
+			}
+
+			#miniLogo{
+				display: inline;
+				float: left;
+				/* width: 10%; */
+				width: 50px; 
+				height: 50px;
+				margin-top: 5px;
+				margin-right: 10px;
+			}
+
+			#searchBar{
+				display: inline;
+				float: left;
+				/* width: 38%; */			
+			}
+
+			#searchArea{
+				width: 300px; 
+				font-size: 1.5em;
+				margin-top: 12px;
+			}
+
+			#loginTitle{
+				display: inline;
+				float: left;
+				text-align: left;
+				margin-left: 550px;
+				/* width: 44%; */
+			}
+
+			#loginForm{
+				display: inline;
+				float: right;
+				/* width: 10%; */
+				margin-top: 12px;
+			}
+
+			#logInButton{
+				font-size: 1em;
+				background-color: #3366FF;
+				color: white;
+				border: none;
+				border-radius: 2px;
+				height: 30px;
+				width: 80px;
+			}
+
+			#submitButton{
+				font-size: 1.5em;
+				background-color: #3366FF;
+				color: white;
+				border: none;
+				border-radius: 2px;
+				width: 100px;
+			}
+
+			#return{
+				margin-top:20px; 
+				font-size:1.2em;
+				height: 30px; 
+				width:300px; 
+				background-color: #3366FF;
+				color: white;
+				border: none;
+				border-radius: 8px;
+			}
+
+			th, td {
+				border: 1px solid black;
+				border-collapse: collapse;
+				text-align: center;
+				vertical-align: middle;
+			}
+
+			.searchOption{
+				display: block;				
+				margin-top: 1.2em;
+				margin-bottom: 1.2em;	
+			}
+
+			#link1, #link2, #link3, #link4, #link5{
+				display: block;
+				font-size: 1.5em;
+			}
+
+			ul {
+  			display: inline-block;
+				padding: 0;
+				margin: 0;
+			}
+
+			ul li {display: inline;}
+
+			ul li a {
+					color: black;
+					float: left;
+					padding: 8px 16px;
+					text-decoration: none;
+			}
+
+			ul li a.active {
+					background-color: #3366FF;
+					color: white;
+			}
+
+			ul li a:hover:not(.active) {
+				background-color: #ddd;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- The contents of the top bar - include the login button and input block to use the search engine -->
+		<div>
+			<!-- The ever-famous puddle logo -->
+			<img id="miniLogo" src="../images/puddle.jpg" alt="Puddle, literally" />
+			<!-- Once the submit button is clicked the input is sent within a GET request to our bottle server -->		
+			<form action="/" method="get" id="searchBar">
+				<input id="searchArea" required type="text" name="keywords" placeholder="Search within the Puddle"/> 
+				<input id="submitButton" type="submit" /> 
+			</form>
+
+			<!-- The Login Title with Current Logged in User with Login/Signout Option -->
+			<h3 id="loginTitle"></h3>
+			<form id="loginForm" action="/googleAction" method="get">
+				<button id="logInButton" type="submit">Sign-In</button>
+			</form>
+		</div>
+		<br />
+		<br />
+		<br />
+		<br />
+		<h3 id='emptySearch'>Sorry, there is nothing in the puddle regarding the above search.</h3>
+		<div id='resultLinks'>
+			<div class='searchOption'>
+				<a id="link1">Link1</a>
+				<b id="url1"></b>		
+			</div>
+			<div class='searchOption'>
+				<a id="link2">Link2</a>
+				<b id="url2"></b>		
+			</div>
+			<div class='searchOption'>
+				<a id="link3">Link3</a>
+				<b id="url3"></b>		
+			</div>
+			<div class='searchOption'>
+				<a id="link4">Link4</a>
+				<b id="url4"></b>		
+			</div>
+			<div class='searchOption'>
+				<a id="link5">Link5</a>
+				<b id="url5"></b>		
+			</div>
+			<ul id='pageList'></ul>
+		</div>
+
+		<button id="return" onclick='jumpHome()'>Return to Home Page</button>
+
+		<script>
+		var xhr = new XMLHttpRequest();
+
+		xhr.onreadystatechange = function(){
+				if(xhr.readyState === XMLHttpRequest.DONE){
+					if(xhr.status === 200){
+						var response = JSON.parse(xhr.responseText);
+
+						if(response.result == 0){				
+							document.getElementById('emptySearch').style.display = "block";
+						}else {
+							//set all h3 tags to the links such that the first element in the response is the first link, etc.
+							document.getElementById('link1').innerHTML = response.titles[0];
+							document.getElementById('link1').setAttribute('href', response.urls[0]);
+							document.getElementById('url1').innerHTML = response.urls[0];					
+
+							if(response.urls[1] === undefined) document.getElementsByClassName('searchOption')[1].style.display = 'none';
+							else{
+								document.getElementById('link2').innerHTML = response.titles[1];
+								document.getElementById('link2').setAttribute('href', response.urls[1]);
+								document.getElementById('url2').innerHTML = response.urls[1];
+								document.getElementsByClassName('searchOption')[1].style.display = 'block';
+							}
+
+							if(response.urls[2] === undefined) document.getElementsByClassName('searchOption')[2].style.display = 'none';
+							else{
+								document.getElementById('link3').innerHTML = response.titles[2];
+								document.getElementById('link3').setAttribute('href', response.urls[2]);
+								document.getElementById('url3').innerHTML = response.urls[2];
+								document.getElementsByClassName('searchOption')[2].style.display = 'block';
+							}
+
+							if(response.urls[3] === undefined) document.getElementsByClassName('searchOption')[3].style.display = 'none';
+							else{
+								document.getElementById('link4').innerHTML = response.titles[3];
+								document.getElementById('link4').setAttribute('href', response.urls[3]);
+								document.getElementById('url4').innerHTML = response.urls[3];
+								document.getElementsByClassName('searchOption')[3].style.display = 'block';
+							}
+
+							if(response.urls[4] === undefined) document.getElementsByClassName('searchOption')[4].style.display = 'none';
+							else{
+								document.getElementById('link5').innerHTML = response.titles[4];
+								document.getElementById('link5').setAttribute('href', response.urls[4]);
+								document.getElementById('url5').innerHTML = response.urls[4];
+								document.getElementsByClassName('searchOption')[4].style.display = 'block';
+							}
+
+							//setting up the page links
+							for(i=1; i<response.result + 1; i++){
+								var li = document.createElement('li');
+								var a = document.createElement('a');
+
+								a.innerHTML = i;
+								a.setAttribute('href', "#");
+								a.setAttribute('onclick', "getPage(this)");
+
+								if(i == 1) a.setAttribute('class', 'active');
+
+								li.appendChild(a);
+								document.getElementById('pageList').appendChild(li);
+							}
+
+							document.getElementById('resultLinks').style.display = "block";
+					}
+				}			
+			}
+		};
+
+		xhr.open('POST', '/getURLs');
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	
+		var allWords = document.getElementById('searchArea').getAttribute('value').toLowerCase();
+		
+		xhr.send("allWords="+allWords+"&pageNum=1");		
+
+		function jumpHome(){
+			//this makes a GET request to the address below, the home page of our search engine
+			window.location.href = '/';
+		}
+
+		function getPage(element){
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState === XMLHttpRequest.DONE){
+					if(xhr.status === 200){
+						var response = JSON.parse(xhr.responseText);
+
+						if(response.result == 0){				
+							document.getElementById('emptySearch').style.display = "block";
+						}else {
+							//set all h3 tags to the links such that the first element in the response is the first link, etc.
+							document.getElementById('link1').innerHTML = response.titles[0];
+							document.getElementById('link1').setAttribute('href', response.urls[0]);
+							document.getElementById('url1').innerHTML = response.urls[0];					
+
+							if(response.urls[1] === undefined) document.getElementsByClassName('searchOption')[1].style.display = 'none';
+							else{
+								document.getElementById('link2').innerHTML = response.titles[1];
+								document.getElementById('link2').setAttribute('href', response.urls[1]);
+								document.getElementById('url2').innerHTML = response.urls[1];
+								document.getElementsByClassName('searchOption')[1].style.display = 'block';
+							}
+
+							if(response.urls[2] === undefined) document.getElementsByClassName('searchOption')[2].style.display = 'none';
+							else{
+								document.getElementById('link3').innerHTML = response.titles[2];
+								document.getElementById('link3').setAttribute('href', response.urls[2]);
+								document.getElementById('url3').innerHTML = response.urls[2];
+								document.getElementsByClassName('searchOption')[2].style.display = 'block';
+							}
+
+							if(response.urls[3] === undefined) document.getElementsByClassName('searchOption')[3].style.display = 'none';
+							else{
+								document.getElementById('link4').innerHTML = response.titles[3];
+								document.getElementById('link4').setAttribute('href', response.urls[3]);
+								document.getElementById('url4').innerHTML = response.urls[3];
+								document.getElementsByClassName('searchOption')[3].style.display = 'block';
+							}
+
+							if(response.urls[4] === undefined) document.getElementsByClassName('searchOption')[4].style.display = 'none';
+							else{
+								document.getElementById('link5').innerHTML = response.titles[4];
+								document.getElementById('link5').setAttribute('href', response.urls[4]);
+								document.getElementById('url5').innerHTML = response.urls[4];
+								document.getElementsByClassName('searchOption')[4].style.display = 'block';
+							}
+
+							//set clicked page as active, inactivated previously active page
+							document.getElementsByClassName('active')[0].removeAttribute('class');
+							element.setAttribute('class', 'active');
+
+							document.getElementById('resultLinks').style.display = "block";
+						}
+					}				
+				}
+			};
+
+			xhr.open('POST', '/getURLs');
+			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+			var allWords = document.getElementById('searchArea').getAttribute('value').toLowerCase();
+
+			xhr.send("allWords="+allWords+"&pageNum="+element.innerHTML);
+		}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,12 @@
+How to run the unit tests:
+	1. Ensure that the following files are in the same folder as the file "unittests_PS.py" (go to the backend folder to confirm this):
+		i.          crawler.py
+		ii.         different_order_urls.txt
+		iii.        google_test_constants.py
+		iv.         invalid_test.txt
+		v.          sev_urls.txt
+		vi.         three_website_test_constant.py
+		
+	2. To run the program, type "python unittests_PS.py" in the terminal window, whilst in the backend folder.
+	3. If all unit tests have passed, then you will get a message saying "The crawler program failed 0 tests. Congratulations!"
+	4. Otherwise, the number of erroneous test cases will be displayed instead of 0.

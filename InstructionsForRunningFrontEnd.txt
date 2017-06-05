@@ -1,0 +1,5 @@
+To run the front end:
+	-	go to the backend folder and run 
+			python searchEngine.py
+	- this will run the webserver on localhost:8080/
+	- then go to localhost:8080/ and enjoy our search engine!!

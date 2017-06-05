@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<!-- This page is a template for the query page, the search engine's home page -->
+<html>
+ <head>
+  <title>
+   Puddle
+  </title>
+  <link href="../images/puddle.jpg" rel="icon"/>
+  <style>
+   #centerObjects{
+				display:block; 
+				margin-left:auto; 
+				margin-right:auto;
+			}
+
+			#history{
+				width:100%;
+				border: 1px solid black;
+				border-collapse: collapse;
+				background-color: #B3D9FF;
+			}
+
+			#loginTitle{
+				display: block;
+				text-align: right;
+				float: left;
+				width: 88%;
+			}
+
+			#loginForm{
+				display: block;
+				float: right;
+				width: 10%;
+				margin-top: 12px;
+			}
+
+			#loginButton{
+				font-size: 1em;
+				background-color: #3366FF;
+				color: white;
+				border: none;
+				border-radius: 2px;
+				height: 30px;
+				width: 80px;
+			}
+
+			.buttonBlue{
+				margin-top:20px; 
+				font-size:1.2em;
+				height: 30px; 
+				width:300px; 
+				background-color: #3366FF;
+				color: white;
+				border: none;
+				border-radius: 8px; 
+			}
+
+			th, td {
+				border: 1px solid black;
+				border-collapse: collapse;
+				text-align: center;
+				vertical-align: middle;
+			}
+  </style>
+ </head>
+ <body>
+  <!-- The Login Title with Current Logged in User with Login/Signout Option -->
+  <h3 id="loginTitle">
+  </h3>
+  <form action="http://localhost:8080/googleAction" id="loginForm" method="get">
+   <button id="loginButton" type="submit">
+    Sign-In
+   </button>
+  </form>
+  <br/>
+  <!-- The Puddle Logo -->
+  <img alt="Puddle Logo" id="centerObjects" src="../images/logo.png" style="width:253px; height:190px; margin-top:100px; "/>
+  <!-- Once the submit button is clicked the input is sent within a GET request to our bottle server -->
+  <form action="http://localhost:8080/" method="get">
+   <input autofocus="" id="centerObjects" name="keywords" placeholder="Search within the Puddle" required="" style="margin-top:20px; width:300px; font-size:1.5em;" type="text"/>
+   <input class="buttonBlue" id="centerObjects" type="submit"/>
+  </form>
+  <br/>
+  <!-- This is the table that holds the history of the top 20 words that have been recently searched -->
+  <h4>
+   The top 20 most recently searched keywords:
+  </h4>
+  <table id="history">
+   <tr>
+    <th>
+     Position
+    </th>
+    <th>
+     Word
+    </th>
+   </tr>
+   <tr>
+    <td>
+     1
+    </td>
+    <td>
+     v
+    </td>
+   </tr>
+   <tr>
+    <td>
+     2
+    </td>
+    <td>
+     u
+    </td>
+   </tr>
+   <tr>
+    <td>
+     3
+    </td>
+    <td>
+     t
+    </td>
+   </tr>
+   <tr>
+    <td>
+     4
+    </td>
+    <td>
+     s
+    </td>
+   </tr>
+   <tr>
+    <td>
+     5
+    </td>
+    <td>
+     r
+    </td>
+   </tr>
+   <tr>
+    <td>
+     6
+    </td>
+    <td>
+     q
+    </td>
+   </tr>
+   <tr>
+    <td>
+     7
+    </td>
+    <td>
+     p
+    </td>
+   </tr>
+   <tr>
+    <td>
+     8
+    </td>
+    <td>
+     o
+    </td>
+   </tr>
+   <tr>
+    <td>
+     9
+    </td>
+    <td>
+     n
+    </td>
+   </tr>
+   <tr>
+    <td>
+     10
+    </td>
+    <td>
+     m
+    </td>
+   </tr>
+   <tr>
+    <td>
+     11
+    </td>
+    <td>
+     l
+    </td>
+   </tr>
+   <tr>
+    <td>
+     12
+    </td>
+    <td>
+     k
+    </td>
+   </tr>
+   <tr>
+    <td>
+     13
+    </td>
+    <td>
+     j
+    </td>
+   </tr>
+   <tr>
+    <td>
+     14
+    </td>
+    <td>
+     i
+    </td>
+   </tr>
+   <tr>
+    <td>
+     15
+    </td>
+    <td>
+     h
+    </td>
+   </tr>
+   <tr>
+    <td>
+     16
+    </td>
+    <td>
+     g
+    </td>
+   </tr>
+   <tr>
+    <td>
+     17
+    </td>
+    <td>
+     f
+    </td>
+   </tr>
+   <tr>
+    <td>
+     18
+    </td>
+    <td>
+     e
+    </td>
+   </tr>
+   <tr>
+    <td>
+     19
+    </td>
+    <td>
+     d
+    </td>
+   </tr>
+   <tr>
+    <td>
+     20
+    </td>
+    <td>
+     c
+    </td>
+   </tr>
+  </table>
+ </body>
+</html>

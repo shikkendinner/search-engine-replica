@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<!-- This page acts as a template page for the error page. Allows you to redirect back to the main page -->
+<html>
+	<head>
+		<title>Puddle Says You Messed Up</title>
+		<!-- the favicon -->
+		<link rel="icon" href="../images/puddle.jpg" />
+		<style> 
+			body{
+				background-color: #3366FF;
+				color: white;
+				text-align: center;
+			}
+			
+			#return{
+				margin-top:20px; 
+				font-size:1.2em;
+				height: 30px; 
+				width:300px; 
+				background-color: white;
+				color: #3366FF;
+				border: none;
+				border-radius: 8px;
+			}
+
+			h1{
+				font-size: 5em;
+			}
+
+			div{
+				padding: 5em 0em;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<h1>ERROR!</h1>
+			<h3>WELL, THINGS HAVE GONE WRONG...</h3>
+			<h4>I hope it's not our fault :D</h4>
+			<button id="return" onclick='jumpHome()'>Return to Puddle</button>
+		</div>
+		<script>
+		function jumpHome(){
+			//this makes a GET request to the address below, the home page of our search engine
+			window.location.href = '/';
+		}
+		</script>
+	</body>
+</html>

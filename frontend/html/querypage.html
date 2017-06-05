@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<!-- This page is a template for the query page, the search engine's home page -->
+<html>
+		<head>
+    	<meta name="description" content="waterdrop" />
+      <meta charset=utf-8 />
+		<title>Puddle</title>
+		<link rel="icon" href="../images/puddle.jpg" />
+		<style> 
+			body{
+        font-size: 100%;
+        background-image: url("../images/water_ripple.gif");
+        background-size: 100%;
+        background-repeat: no-repeat;
+    	}
+            
+      #centerObjects{
+				display:block; 
+				margin-left:auto; 
+				margin-right:auto;
+			}
+            
+			#history{
+				width:80%;
+				border: 1px solid black;
+				border-collapse: collapse;
+				background-color: #B3D9FF;
+        margin-left:auto;
+        margin-right:auto;
+        font-family: Arial;
+        font-size: 100%;
+			}
+
+			#loginTitle{
+				z-index: 1;
+				display: inline;
+				text-align: right;
+				float: left;
+				margin-left: 70%;
+				color: white;
+			}
+
+			#loginForm{
+				display: inline;
+				float: right;
+				margin-top: 1%;
+			}
+            
+      .rectangleTOP {
+        z-index: -1;
+        position:absolute !important;
+        top:0%;
+        left:0%;
+        width: 100%;
+        height: 10%;
+        background-color: #051522;
+      }            
+            
+			.logInButton{
+				position: absolute !important;
+				font-size: 100%;
+				color: white;
+				background-color: #3366FF;
+				top: 0%;
+				height: 10%;
+				width: 10%;
+				right: 0%;
+				border: 2px solid #3366FF;
+				cursor: pointer;
+			}
+
+			.buttonBlue{
+				margin-top:1%; 
+				font-size:120%;
+				height: 5%; 
+				width: 23%; 
+				background-color: #3366FF;
+				color: white;
+				border: 2px solid #3366FF;
+				border-radius: 8px;
+        cursor: pointer;
+			}
+            
+      .rectangleBOT {
+        z-index: -1;
+        position:absolute !important;
+        bottom:0%;
+        left:0%;
+        width: 100%;
+        height: 30%;
+        background-color: 051522;
+      }
+                        
+      .colorAnimation{}
+      .colorAnimation:hover{
+		    background-color:white;
+		    color:#3366FF;
+		    font-style:bold;
+      }         
+      
+      .animation {
+        z-index: -1;
+        position:absolute !important;
+        margin-top:15%;
+        margin-left:50%;
+        background:#8AC1E6;;
+        border-radius: 50% 50% 50% 0;
+        transform: rotate(135deg);
+        width: 12em;
+        height: 12em;
+        -webkit-animation: waterdrop 2s  cubic-bezier(0.83,0.46,.54,1.42) ;
+        -moz-animation: waterdrop 2s  cubic-bezier(0.83,0.46,.54,1.42) ;
+        -ms-animation: waterdrop 2s  cubic-bezier(0.83,0.46,.54,1.42) ;
+        -o-animation: waterdrop 2s  cubic-bezier(0.83,0.46,.54,1.42) ;
+        animation: waterdrop 2s  cubic-bezier(0.83,0.46,.54,1.42) ;
+      }
+
+      @-webkit-keyframes waterdrop {
+        0%  {
+          border-radius:50% 50% 50% 0;
+          opacity: 0;
+          -webkit-transform: translate(0,-400%) rotate(135deg);
+          -moz-transform: translate(0,-400%) rotate(135deg);
+          -ms-transform: translate(0,-400%) rotate(135deg);
+          -o-transform: translate(0,-400%) rotate(135deg);
+          transform: translate(0,-400%) rotate(135deg);
+        }
+        100% {  
+          border-radius:50% 50% 50% 0;
+          opacity: 1;
+          -webkit-transform: translate(0,0) rotate(135deg);
+          -moz-transform: translate(0,0) rotate(135deg);
+          -ms-transform: translate(0,0) rotate(135deg);
+          -o-transform: translate(0,0) rotate(135deg);
+          transform: translate(0,0) rotate(135deg);
+        }
+      }
+      @-moz-keyframes waterdrop {
+        0%  {
+          border-radius:50% 50% 50% 0;
+          opacity: 0;
+          -webkit-transform: translate(0,-400%) rotate(135deg);
+          -moz-transform: translate(0,-400%) rotate(135deg);
+          -ms-transform: translate(0,-400%) rotate(135deg);
+          -o-transform: translate(0,-400%) rotate(135deg);
+          transform: translate(0,-400%) rotate(135deg);
+        }
+        100% {  
+          border-radius:50% 50% 50% 0;
+          opacity: 1;
+          -webkit-transform: translate(0,0) rotate(135deg);
+          -moz-transform: translate(0,0) rotate(135deg);
+          -ms-transform: translate(0,0) rotate(135deg);
+          -o-transform: translate(0,0) rotate(135deg);
+          transform: translate(0,0) rotate(135deg);
+        }
+      }
+      @-ms-keyframes waterdrop {
+        0%  {
+          border-radius:50% 50% 50% 0;
+          opacity: 0;
+          -webkit-transform: translate(0,-400%) rotate(135deg);
+          -moz-transform: translate(0,-400%) rotate(135deg);
+          -ms-transform: translate(0,-400%) rotate(135deg);
+          -o-transform: translate(0,-400%) rotate(135deg);
+          transform: translate(0,-400%) rotate(135deg);
+        }
+        100% {  
+          border-radius:50% 50% 50% 0;
+          opacity: 1;
+          -webkit-transform: translate(0,0) rotate(135deg);
+          -moz-transform: translate(0,0) rotate(135deg);
+          -ms-transform: translate(0,0) rotate(135deg);
+          -o-transform: translate(0,0) rotate(135deg);
+          transform: translate(0,0) rotate(135deg);
+        }
+      }
+      @-o-keyframes waterdrop {
+        0%  {
+          border-radius:50% 50% 50% 0;
+          opacity: 0;
+          -webkit-transform: translate(0,-400%) rotate(135deg);
+          -moz-transform: translate(0,-400%) rotate(135deg);
+          -ms-transform: translate(0,-400%) rotate(135deg);
+          -o-transform: translate(0,-400%) rotate(135deg);
+          transform: translate(0,-400%) rotate(135deg);
+        }
+        100% {  
+          border-radius:50% 50% 50% 0;
+          opacity: 1;
+          -webkit-transform: translate(0,0) rotate(135deg);
+          -moz-transform: translate(0,0) rotate(135deg);
+          -ms-transform: translate(0,0) rotate(135deg);
+          -o-transform: translate(0,0) rotate(135deg);
+          transform: translate(0,0) rotate(135deg);
+        }
+      }
+      @keyframes waterdrop {
+        0%  {
+          border-radius:50% 50% 50% 0;
+          opacity: 0;
+          -webkit-transform: translate(0,-400%) rotate(135deg);
+          -moz-transform: translate(0,-400%) rotate(135deg);
+          -ms-transform: translate(0,-400%) rotate(135deg);
+          -o-transform: translate(0,-400%) rotate(135deg);
+          transform: translate(0,-400%) rotate(135deg);
+        }
+        100% {  
+          border-radius:50% 50% 50% 0;
+          opacity: 1;
+          -webkit-transform: translate(0,0) rotate(135deg);
+          -moz-transform: translate(0,0) rotate(135deg);
+          -ms-transform: translate(0,0) rotate(135deg);
+          -o-transform: translate(0,0) rotate(135deg);
+          transform: translate(0,0) rotate(135deg);
+        }
+      }
+
+			th, td {
+				border: 1px solid black;
+				border-collapse: collapse;
+				text-align: center;
+				vertical-align: middle;
+			}
+
+			strong {
+				color: red;
+        margin-left: 17%;
+			}
+		</style>
+	</head>
+	<body>
+    <div class="rectangleTOP"></div>
+    <div class="animation"></div>
+		<!-- The Login Title with Current Logged in User with Login/Signout Option -->
+		<h3 id="loginTitle"></h3>
+		<form id="loginForm" action="/googleAction" method="get">
+			<button id="logInButton" class="logInButton colorAnimation" type="submit">Sign-In</button>
+		</form>
+		<br /> 
+		
+    <!-- The Puddle Logo -->
+		<img id="centerObjects" src="../images/logo.png" alt="Puddle Logo" style="width:20%; margin-top:9%; " />
+    <!-- <img id="centerObjects" src="../images/logo.png" alt="Puddle Logo" style="width:20%; margin-top:9%; " /> -->
+		
+    <!-- Once the submit button is clicked the input is sent within a GET request to our bottle server -->		
+		<form action="/" method="get">
+			<input id="centerObjects" autofocus required type="text" name="keywords" placeholder="Search within the Puddle..." style="margin-top:1%; width:25%; font-size:125%;" /> 
+			<input id="centerObjects" class="buttonBlue colorAnimation" type="submit" /> 
+		</form>
+		<br />
+		<!-- This is the table that holds the history of the top 20 words that have been recently searched -->
+		<h4 style= "margin-left: 10%; font-family:Arial;" >The top 20 most recently searched keywords:</h4>
+		<table id="history">
+			<tr>
+				<th style= "width: 30%">Position</th>
+				<th style= "width: 70%">Word</th>
+			</tr>
+		</table>
+	</body>
+</html>
