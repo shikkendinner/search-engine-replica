@@ -1,4 +1,0 @@
-Instructions for running crawler:
-        1. Ensure the terminal is open in the backend folder.
-        2. Put in your urls.txt file, that includes all the webpages you wish to "crawl." (Overwrite if needed)
-        3. Run the program by typing "python crawler.py" whilst the terminal is in the backend folder.
